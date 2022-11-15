@@ -1,0 +1,14 @@
+{
+  "resourceName": "imagefornotes",
+  "policyUUID": "51b6c2ec",
+  "bucketName": "imagesfornotes",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
