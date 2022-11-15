@@ -24,7 +24,7 @@ const App = ({ signOut }) => {
   useEffect(() => {
     fetchNotes();
   }, []);
-
+//testing 
   async function fetchNotes() {
     const apiData = await API.graphql({ query: listNotes });
     const notesFromAPI = apiData.data.listNotes.items;
@@ -38,6 +38,7 @@ const App = ({ signOut }) => {
       })
     );
     setNotes(notesFromAPI);
+    console.log("hello");
   }
 
   async function createNote(event) {
@@ -49,6 +50,7 @@ const App = ({ signOut }) => {
       description: form.get("description"),
       image: image.name,
     };
+    
     if (!!data.image) await Storage.put(data.name, image);
     await API.graphql({
       query: createNoteMutation,
@@ -102,23 +104,6 @@ const App = ({ signOut }) => {
       />
       <Heading level={2}>Current Notes</Heading>
       <View margin="3rem 0">
-        {notes.map((note) => (
-          <Flex
-            key={note.id || note.name}
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Text as="strong" fontWeight={700}>
-              {note.name}
-            </Text>
-            <Text as="span">{note.description}</Text>
-            <Button variation="link" onClick={() => deleteNote(note)}>
-              Delete note
-            </Button>
-          </Flex>
-        ))}
-      </View>
       {notes.map((note) => (
   <Flex
     key={note.id || note.name}
@@ -142,8 +127,10 @@ const App = ({ signOut }) => {
     </Button>
   </Flex>
 ))}
+      </View>   
       <Button onClick={signOut}>Sign Out</Button>
     </View>
+    
     
   );
 };
